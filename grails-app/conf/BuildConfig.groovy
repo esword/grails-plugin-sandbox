@@ -43,7 +43,7 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         //Security
-        //compile ':spring-security-core:1.2.7.2'
+        compile ':spring-security-core:1.2.7.2'
     }
 }
 

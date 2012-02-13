@@ -92,7 +92,44 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'grails.plugins.sandbox.auth.LibraryUser'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'grails.plugins.sandbox.auth.LibraryUserLibraryGroup'
-grails.plugins.springsecurity.authority.className = 'grails.plugins.sandbox.auth.LibraryGroup'
+//*****************************************************************************
+// Application config file overrides
+//*****************************************************************************
+grails.config.locations = [SecurityConfig, AppDefaultConfig]
+
+// JVM arg method: Useful mainly in dev. By passing in -Dapp.config.location=<FULL_PATH_OF_CONFIG_FILE>
+// when starting the app you can specify any config file you desire
+def appConfigPath = System.properties["app.config.location"]
+if (appConfigPath && (new File(appConfigPath).exists())) {
+    grails.config.locations << "file:" + appConfigPath
+
+} else {
+
+    // This section checks through a series of possible locations based on the current environment
+    // As it's much easier to supply a checklist of locations here than to externalize this unfortunately
+    // looks a bit excessive but provides many options to deploy to different prod environments
+    environments {
+        // When running in the production environment the config file can be one any of a number
+        // of different places. Specific file locations are checked first to see if they exist
+        // and will eventually default to a file somewhere on the classpath if no others are found.
+        production {
+            if (new File("/etc/libraryapp/custom_libraryapp_config.groovy").exists()) {
+                grails.config.locations << "file:/etc/libraryapp/custom_config.groovy"
+            } else if (new File("${userHome}/.libraryapp/user_config.groovy").exists()) {
+                grails.config.locations << "file:${userHome}/.libraryapp/user_config.groovy"
+            } else {
+                grails.config.locations << "classpath:custom_libraryapp_config.groovy"
+            }
+        }
+        // When running in development or test mode defaults to a specific file in the your home directory
+        development {
+            grails.config.locations << "file:${userHome}/.libraryapp/user_config.groovy"
+        }
+        test {
+            grails.config.locations << "file:${userHome}/.libraryapp/user_config.groovy"
+        }
+    }
+}
+
+// Last we merge in an empty file which can contain settings for each instance
+grails.config.locations << "classpath:application.instance.properties"

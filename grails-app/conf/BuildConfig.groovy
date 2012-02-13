@@ -81,4 +81,19 @@ grails.project.dependency.resolution = {
     }
 }
 
+codenarc {
+    reports = {
+        MyXmlReport('xml') {
+            outputFile = 'target/test-reports/codenarc/CodeNarcReport.xml'
+            title = 'Sample Report'
+        }
+        MyHtmlReport('html') {
+            outputFile = 'target/test-reports/codenarc/CodeNarcReport.html'
+            title = 'Sample Report'
+        }
+    }
+    extraIncludeDirs=['grails-app/jobs','grails-app/test/functional']
+}
+
+
 server.port=8880

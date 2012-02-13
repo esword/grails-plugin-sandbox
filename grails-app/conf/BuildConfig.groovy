@@ -6,13 +6,15 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
+def webDriverVersion = '2.18.0'
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
         // uncomment to disable ehcache
         // excludes 'ehcache'
     }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
 
     repositories {
@@ -32,46 +34,50 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
-        // runtime 'mysql:mysql-connector-java:5.1.16'
+        //see: http://www.gebish.org/manual/current/build-integrations.html#grails
+        test "org.codehaus.geb:geb-junit4:0.6.2"
+        test "org.codehaus.geb:geb-spock:0.6.2"
+        test "org.seleniumhq.selenium:selenium-support:$webDriverVersion"
+        test "org.seleniumhq.selenium:selenium-firefox-driver:$webDriverVersion"
+        test("org.seleniumhq.selenium:selenium-htmlunit-driver:$webDriverVersion") {
+            exclude 'xml-apis'
+        }
     }
 
     plugins {
-        //built in plugins
+        //Built in plugins
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
-        runtime ":resources:1.1.5"
+        runtime ":resources:1.1.6"
         build ":tomcat:$grailsVersion"
 
         //Security
         compile ':spring-security-core:1.2.7.2'
-
         compile ":audit-logging:0.5.4"
 
-        //Build time plugins
-        //compile ":app-info:0.4.3" - compile error
-
-        compile ':grails-melody:1.11'
+        //Metrics
+        compile ":code-coverage:1.2.5"
+        compile ":codenarc:0.16.1"
+        compile ":gmetrics:0.3.1"
 
         //Debugging and Monitoring
+        //compile ":app-info:0.4.3" - compile error
+        compile ':grails-melody:1.11'
         compile ":console:1.1"
         compile ':runtime-logging:0.4'
 
-        //Metrics
-        compile ":code-coverage:1.2.4"
-        compile ":codenarc:0.15"
-        compile ":gmetrics:0.3.1"
-	
         //System Init
-        //http://gpc.github.com/grails-fixtures/docs/index.html
-        compile ':fixtures:1.0.7'
 
         //Web Layer
         compile ':browser-detection:0.3.3'
-        //Testing
-        // test ":geb:0.6.1"
-        compile ':build-test-data:1.1.1'
 
-        // test ":geb:0.6.1"
+        //Testing
+        //http://gpc.github.com/grails-fixtures/docs/index.html
+        compile ':fixtures:1.1'
+        compile ':svn:1.0.2'
+        //https://bitbucket.org/tednaleid/grails-test-data/wiki/Home
+        test ':build-test-data:2.0.0'
+        test ":geb:0.6.2"
     }
 }
 

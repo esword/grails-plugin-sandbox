@@ -30,7 +30,7 @@ class LibraryUser {
 	}
 
 	Set<AuthRole> getAuthorities() {
-		UserRoleMapper.findAllByLibraryUser(this).collect { it.libraryGroup } as Set
+		UserRoleMapper.findAllByUser(this).collect { it.role } as Set
 	}
 
 	def beforeInsert() {

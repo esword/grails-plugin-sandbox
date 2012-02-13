@@ -1,5 +1,10 @@
 package grails.plugins.sandbox.auth
 
+import groovy.transform.ToString
+import groovy.transform.EqualsAndHashCode
+
+@ToString(includes='username')
+@EqualsAndHashCode
 class LibraryUser {
     static auditable = true
     /**

@@ -1,12 +1,16 @@
 package grails.plugins.sandbox.auth
 
 import org.apache.commons.lang.builder.HashCodeBuilder
-
 class UserRoleMapper implements Serializable {
     static auditable = true
 
 	LibraryUser user
 	AuthRole role
+
+    static mapping = {
+        id composite: ['role', 'user']
+        version false
+    }
 
 	boolean equals(other) {
 		if (!(other instanceof UserRoleMapper)) {
@@ -24,6 +28,10 @@ class UserRoleMapper implements Serializable {
 		builder.toHashCode()
 	}
 
+    String toString() {
+        "UserRoleMapper(${user?.username}, ${role?.authority})"
+    }
+    
 	static UserRoleMapper get(long userId, long roleId) {
 		find 'from UserRoleMapper where user.id=:userId and role.id=:roleId',
 			[userId: userId, roleId: roleId]
@@ -49,10 +57,5 @@ class UserRoleMapper implements Serializable {
 
 	static void removeAll(AuthRole role) {
 		executeUpdate 'DELETE FROM UserRoleMapper WHERE role=:role', [role: role]
-	}
-
-	static mapping = {
-		id composite: ['role', 'user']
-		version false
 	}
 }

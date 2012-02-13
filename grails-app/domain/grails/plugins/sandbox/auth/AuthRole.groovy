@@ -1,5 +1,10 @@
 package grails.plugins.sandbox.auth
 
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+
+@ToString
+@EqualsAndHashCode
 class AuthRole {
 
 	String authority

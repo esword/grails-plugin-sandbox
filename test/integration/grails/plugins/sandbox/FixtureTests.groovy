@@ -28,6 +28,7 @@ class FixtureTests {
     
     @Test
     void "usersFixture inited correctly"() {
+        fixtureLoader.load('SecurityFixture')
         def f = fixtureLoader.load('test/TestUsersFixture')
         assert LibraryUser.count == 16
         def admin1 = LibraryUser.findByUsername('admin1')

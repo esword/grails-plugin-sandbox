@@ -38,6 +38,7 @@ class SecurityConfigTests extends GebReportingTest {
 
     @Test
     void "book controller requires login"() {
+        fixtureLoader.load('SecurityFixture')
         fixtureLoader.load('test/TestUsersFixture')
         fixtureLoader.load('test/TestDataFixture')
 

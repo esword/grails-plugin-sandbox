@@ -44,4 +44,17 @@ class FixtureTests {
 
         assert (f.b1.authors as List) == [f.a1]
     }
+
+    @Test
+    void "authors fixture inited correctly"() {
+        fixtureLoader.load('test/AuthorsFixture')
+        assert Author.count == 100
+    }
+
+    @Test
+    void "books fixture inited correctly"() {
+        fixtureLoader.load('test/AuthorsFixture')
+        fixtureLoader.load('test/BooksFixture')
+        assert Book.count == 200
+    }
 }

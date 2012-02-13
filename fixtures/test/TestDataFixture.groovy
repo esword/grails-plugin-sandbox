@@ -1,5 +1,6 @@
 import grails.plugins.sandbox.Author
 import grails.plugins.sandbox.Book
+import static java.util.UUID.randomUUID
 
 // the build method triggers integration with the build-test-data plugin to populate any required fields
 // that we have not set.  See:
@@ -8,6 +9,6 @@ build {
     a1(Author, lastName:'King', firstName:'Stephen', dob:Date.parse('MM/dd/yyyy', '09/21/1947'))
     a2(Author, lastName:'Rowling', firstName:'JK', dob:Date.parse('MM/dd/yyyy', '07/31/1965'))
 
-    b1(Book, title:'Shining', authors:[a1])
-    b2(Book, title:'Chamber of Secrets', authors:[a2])
+    b1(Book, title:'Shining', isbn:(randomUUID() as String), authors:[a1])
+    b2(Book, title:'Chamber of Secrets', isbn:(randomUUID() as String), authors:[a2])
 }

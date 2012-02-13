@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) Eric Sword 2012
+ */
+package grails.plugins.sandbox
+
+import org.junit.Test
+import grails.plugins.sandbox.auth.LibraryUser
+import grails.plugins.sandbox.auth.AuthRole
+import grails.plugins.sandbox.auth.UserRoleMapper
+
+/**
+ * 
+ * @version \$Revision$
+ * @author esword
+ */
+class FixtureTests {
+
+    def fixtureLoader
+
+    @Test
+    void "SecurityFixture inited correctly"() {
+        def f = fixtureLoader.load('SecurityFixture')
+        
+        assert LibraryUser.count == 1
+        assert AuthRole.count == 2
+        assert UserRoleMapper.count == 2
+    }
+    
+    @Test
+    void "usersFixture inited correctly"() {
+        def f = fixtureLoader.load('test/TestUsersFixture')
+        assert LibraryUser.count == 16
+        def admin1 = LibraryUser.findByUsername('admin1')
+        assert admin1 != null
+        assert admin1.authorities.size() == 2
+    }
+
+    @Test
+    void "dataFixture inited correctly"() {
+        def f = fixtureLoader.load('test/TestDataFixture')
+        assert f.a1 != null
+        assert f.a1.firstName == 'Stephen'
+
+        assert (f.b1.authors as List) == [f.a1]
+    }
+}

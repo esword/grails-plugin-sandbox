@@ -1,6 +1,8 @@
 
 import grails.plugins.sandbox.auth.*
 
+load('SecurityFixture')
+
 fixture {
     def defaultPassword = 'password'
 

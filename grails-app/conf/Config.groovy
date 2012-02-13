@@ -75,9 +75,11 @@ log4j = {
     // Example of changing the log pattern for the default console
     // appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+        //console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+        file name: 'file', file: 'library-app.log', threshold: org.apache.log4j.Level.DEBUG, layout: pattern(conversionPattern: '%d{dd HH:mm:ss.SSS} %-4.4p [%15.15t] %-40.40c{10}.%15.15M[%4L]: %m%n')
+        console name: 'stdout', threshold: org.apache.log4j.Level.INFO, layout: pattern(conversionPattern: '%d{HH:mm:ss} %-4.4p %c{2} %m%n')
+    }
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -90,6 +92,9 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    //debug 'org.codehaus.groovy.grails.plugins.springsecurity',
+    //        'org.springframework.security.core'
 }
 
 //*****************************************************************************

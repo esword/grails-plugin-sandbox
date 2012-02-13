@@ -1,10 +1,12 @@
+/*
+The security config contains the primary settings for the spring-security plugin,
+including the url-access mapping
+ */
 
 //*****************************************************************************
 // SPRING SECURITY SETTINGS
 //*****************************************************************************
 import grails.plugins.springsecurity.SecurityConfigType
-
-println "In SecurityConfig"
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'grails.plugins.sandbox.auth.LibraryUser'
@@ -30,8 +32,10 @@ grails.plugins.springsecurity.interceptUrlMap = [
         '/monitoring*/**': ["hasRole( 'ROLE_ADMIN' )"],
         '/securityInfo*/**': ["hasRole( 'ROLE_ADMIN' )"],
 
-        '/index': ['IS_AUTHENTICATED_FULLY'],
+        '/index': ['permitAll'],
         '/main': ['IS_AUTHENTICATED_FULLY'],
+        '/book/**': ['IS_AUTHENTICATED_FULLY'],
+        '/author/**': ['IS_AUTHENTICATED_FULLY'],
 
         '/login/*': ['permitAll'],
         '/static/**': ['permitAll'],

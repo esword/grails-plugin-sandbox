@@ -1,6 +1,12 @@
 package grails.plugins.sandbox.auth
 
 class LibraryUser {
+    /**
+     * The name of the auto-created user which owns resources (e.g. default preferences that are auto-created by the
+     * system
+     */
+    static final String DEFAULT_USERNAME = "system_user"
+    static final String DEFAULT_NAME = "System User"
 
 	transient springSecurityService
 
@@ -11,8 +17,11 @@ class LibraryUser {
 	boolean accountLocked
 	boolean passwordExpired
 
+    String name
+
 	static constraints = {
 		username blank: false, unique: true
+        name(blank:false)
 		password blank: false
 	}
 
@@ -20,8 +29,8 @@ class LibraryUser {
 		password column: '`password`'
 	}
 
-	Set<LibraryGroup> getAuthorities() {
-		LibraryUserLibraryGroup.findAllByLibraryUser(this).collect { it.libraryGroup } as Set
+	Set<AuthRole> getAuthorities() {
+		UserRoleMapper.findAllByLibraryUser(this).collect { it.libraryGroup } as Set
 	}
 
 	def beforeInsert() {

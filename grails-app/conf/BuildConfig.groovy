@@ -44,6 +44,15 @@ grails.project.dependency.resolution = {
 
         //Security
         compile ':spring-security-core:1.2.7.2'
+
+        //System Init
+        //http://gpc.github.com/grails-fixtures/docs/index.html
+        compile ':fixtures:1.0.7'
+
+        //Testing
+        compile ':build-test-data:1.1.1'
+
+        // test ":geb:0.6.1"
     }
 }
 

@@ -1,6 +1,6 @@
 package grails.plugins.sandbox.auth
 
-class LibraryGroup {
+class AuthRole {
 
 	String authority
 

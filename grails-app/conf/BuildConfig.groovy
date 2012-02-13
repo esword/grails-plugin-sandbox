@@ -45,11 +45,30 @@ grails.project.dependency.resolution = {
         //Security
         compile ':spring-security-core:1.2.7.2'
 
+        compile ":audit-logging:0.5.4"
+
+        //Build time plugins
+        //compile ":app-info:0.4.3" - compile error
+
+        compile ':grails-melody:1.11'
+
+        //Debugging and Monitoring
+        compile ":console:1.1"
+        compile ':runtime-logging:0.4'
+
+        //Metrics
+        compile ":code-coverage:1.2.4"
+        compile ":codenarc:0.15"
+        compile ":gmetrics:0.3.1"
+	
         //System Init
         //http://gpc.github.com/grails-fixtures/docs/index.html
         compile ':fixtures:1.0.7'
 
+        //Web Layer
+        compile ':browser-detection:0.3.3'
         //Testing
+        // test ":geb:0.6.1"
         compile ':build-test-data:1.1.1'
 
         // test ":geb:0.6.1"

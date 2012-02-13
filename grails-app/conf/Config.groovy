@@ -93,9 +93,20 @@ log4j = {
 }
 
 //*****************************************************************************
-// Application config file overrides
+// Application config file extensions - I like to keep the primary Config.groovy file
+// nearly pristine so that when I upgrade to a new version of grails I can easily compare
+// my app's Config.groovy to the template file in the new grails and see what new settings
+// need to be incorporated.
 //*****************************************************************************
-grails.config.locations = [SecurityConfig, AppDefaultConfig]
+grails.config.locations = []
+
+//The security config contains the primary settings for the spring-security plugin, including the url-access mapping
+grails.config.locations << SecurityConfig
+//The AppDefaultConfig contains all of my application-specific config settings.
+grails.config.locations << AppDefaultConfig
+
+//Next, look for custom config files on a per-instance basis.  These include files for production servers
+//and that individual developers may setup.
 
 // JVM arg method: Useful mainly in dev. By passing in -Dapp.config.location=<FULL_PATH_OF_CONFIG_FILE>
 // when starting the app you can specify any config file you desire
@@ -131,5 +142,3 @@ if (appConfigPath && (new File(appConfigPath).exists())) {
     }
 }
 
-// Last we merge in an empty file which can contain settings for each instance
-grails.config.locations << "classpath:application.instance.properties"

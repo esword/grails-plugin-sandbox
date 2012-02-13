@@ -81,6 +81,8 @@ grails.project.dependency.resolution = {
     }
 }
 
+//See this article about getting codenarc output in Jenkins:
+//http://www.saltwebsites.com/2011/grails-codenarc-jenkins-integration
 codenarc {
     reports = {
         MyXmlReport('xml') {
@@ -95,5 +97,14 @@ codenarc {
     extraIncludeDirs=['grails-app/jobs','grails-app/test/functional']
 }
 
+coverage {
+    //sourceInclusions = ['grails-app/jobs']
+    exclusions = [
+            '**/*Config*',
+            '**/*Resources*',
+            '**/LoginController*',
+            '**/LogoutController*'
+    ]
+}
 
 server.port=8880

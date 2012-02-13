@@ -1,6 +1,7 @@
 package grails.plugins.sandbox.auth
 
 class LibraryUser {
+    static auditable = true
     /**
      * The name of the auto-created user which owns resources (e.g. default preferences that are auto-created by the
      * system

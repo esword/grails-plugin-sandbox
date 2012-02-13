@@ -3,6 +3,7 @@ package grails.plugins.sandbox.auth
 import org.apache.commons.lang.builder.HashCodeBuilder
 
 class UserRoleMapper implements Serializable {
+    static auditable = true
 
 	LibraryUser user
 	AuthRole role

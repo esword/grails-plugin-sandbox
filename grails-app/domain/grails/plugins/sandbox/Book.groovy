@@ -7,6 +7,7 @@ import org.grails.taggable.Taggable
 @EqualsAndHashCode
 @ToString
 class Book implements Taggable {
+    static searchable = true
     static auditable = true
 
     static constraints = {

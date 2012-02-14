@@ -69,6 +69,7 @@ grails.project.dependency.resolution = {
         //Domain Augmentation
         //http://blog.armbruster-it.de/2011/04/a-perfect-team-grails-taggable-plugin-and-jquery-tagit/
         compile ':taggable:1.0.1'
+        compile ':searchable:0.6.3'
 
         //Web Layer
         compile ':jquery-ui:1.8.15'

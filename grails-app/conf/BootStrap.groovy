@@ -19,6 +19,11 @@ class BootStrap {
             fixtureLoader.load("test/TestUsersFixture")
         }
 
+        if (ConfigurationHolder.config.library.init.createTestData) {
+            fixtureLoader.load("test/AuthorsFixture")
+            fixtureLoader.load("test/BooksFixture")
+        }
+
     }
 
 }

@@ -7,5 +7,6 @@ grails.commentable.commentlink.table = "comments_link_table"
 library {
     init {
         createTestUsers = (GrailsUtil.environment == 'development')
+        createTestData = (GrailsUtil.environment == 'development')
     }
 }

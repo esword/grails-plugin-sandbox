@@ -73,6 +73,9 @@ grails.project.dependency.resolution = {
         //Web Layer
         compile ':jquery-ui:1.8.15'
         compile ':browser-detection:0.3.3'
+        //http://freeside.co/grails-fields/guide/
+        //compile ":fields:1.0.4"
+        compile ':tagcloud:0.3'
 
         //Testing
         //http://gpc.github.com/grails-fixtures/docs/index.html

@@ -108,4 +108,10 @@ class BookController {
     def tags() {
         render Tag.findAllByNameIlike("${params.term}%")*.name as JSON
     }
+
+    def tagFilter() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        def books = Book.findAllByTag(params.tag)
+        render(view: "list", model: [bookInstanceList: books, bookInstanceTotal: books.size()])
+    }
 }

@@ -66,9 +66,12 @@ grails.project.dependency.resolution = {
         compile ":console:1.1"
         compile ':runtime-logging:0.4'
 
-        //System Init
+        //Domain Augmentation
+        //http://blog.armbruster-it.de/2011/04/a-perfect-team-grails-taggable-plugin-and-jquery-tagit/
+        compile ':taggable:1.0.1'
 
         //Web Layer
+        compile ':jquery-ui:1.8.15'
         compile ':browser-detection:0.3.3'
 
         //Testing

@@ -2,12 +2,12 @@ import grails.plugins.sandbox.Author
 import grails.plugins.sandbox.Book
 import static java.util.UUID.randomUUID
 
-// the build method triggers integration with the build-test-data plugin to populate any required fields
-// that we have not set.  See:
-// http://gpc.github.com/grails-fixtures/docs/guide/single.html#2.2%20Build-Test-Data%20Integration
+/**
+ * This fixture is for use with the console plugin to demonstrate creating lots of data when needed
+ */
 fixture {
 
-    def numBooks = 200
+    def numBooks = 100
     def first = ['Encyclopedia', 'Compilation', 'Dictionary', 'Journal', 'Atlas', 'Thesaurus',
             'Reference', 'Guide', 'Volume']
     def last = ['Science', 'Popular Culture', 'Math', 'Biology', 'Chemistry', 'Engineering',

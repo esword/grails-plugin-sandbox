@@ -24,6 +24,12 @@ class BootStrap {
             fixtureLoader.load("test/BooksFixture")
         }
 
+        //If you didn't want to do the above all the time, you could insert these lines into the grails
+        //console plugin
+        //import grails.plugins.sandbox.ApplicationContextHolder as ACH
+        //def fixtureLoader = ACH.getBean('fixtureLoader')
+        //fixtureLoader.load('test/AuthorsFixture')
+        //fixtureLoader.load('test/BooksFixture')
     }
 
 }

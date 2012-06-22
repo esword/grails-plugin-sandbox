@@ -6,7 +6,8 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-def webDriverVersion = '2.18.0'
+def webDriverVersion = '2.24.1'
+def gebVersion = '0.6.3'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -35,8 +36,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         //see: http://www.gebish.org/manual/current/build-integrations.html#grails
-        test "org.codehaus.geb:geb-junit4:0.6.2"
-        test "org.codehaus.geb:geb-spock:0.6.2"
+        test "org.codehaus.geb:geb-junit4:$gebVersion"
+        test "org.codehaus.geb:geb-spock:$gebVersion"
         test "org.seleniumhq.selenium:selenium-support:$webDriverVersion"
         test "org.seleniumhq.selenium:selenium-firefox-driver:$webDriverVersion"
         test("org.seleniumhq.selenium:selenium-htmlunit-driver:$webDriverVersion") {
@@ -47,22 +48,22 @@ grails.project.dependency.resolution = {
     plugins {
         //Built in plugins
         runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.7.1"
-        runtime ":resources:1.1.6"
+        runtime ":jquery:1.7.2"
+        runtime ":resources:1.2-RC1"
         build ":tomcat:$grailsVersion"
 
         //Security
-        compile ':spring-security-core:1.2.7.2'
+        compile ':spring-security-core:1.2.7.3'
         compile ":audit-logging:0.5.4"
 
         //Metrics
         compile ":code-coverage:1.2.5"
-        compile ":codenarc:0.16.1"
+        compile ":codenarc:0.17"
         compile ":gmetrics:0.3.1"
 
         //Debugging and Monitoring
         //compile ":app-info:0.4.3" - compile error
-        compile ':grails-melody:1.11'
+        compile ':grails-melody:1.12'
         compile ":console:1.1"
         compile ':runtime-logging:0.4'
 
@@ -73,7 +74,7 @@ grails.project.dependency.resolution = {
 
         //Web Layer
         compile ':jquery-ui:1.8.15'
-        compile ':browser-detection:0.3.3'
+        compile ':browser-detection:0.4.1'
         //http://freeside.co/grails-fields/guide/
         //compile ":fields:1.0.4"
         compile ':tagcloud:0.3'
@@ -83,8 +84,8 @@ grails.project.dependency.resolution = {
         compile ':fixtures:1.1'
         compile ':svn:1.0.2'
         //https://bitbucket.org/tednaleid/grails-test-data/wiki/Home
-        test ':build-test-data:2.0.0'
-        test ":geb:0.6.2"
+        test ':build-test-data:2.0.2'
+        test ":geb:$gebVersion"
     }
 }
 

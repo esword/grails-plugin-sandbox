@@ -9,7 +9,7 @@ including the url-access mapping
 import grails.plugins.springsecurity.SecurityConfigType
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'grails.plugins.sandbox.auth.LibraryUser'
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'grails.plugins.sandbox.auth.AuthUser'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'grails.plugins.sandbox.auth.UserRoleMapper'
 grails.plugins.springsecurity.authority.className = 'grails.plugins.sandbox.auth.AuthRole'
 //grails.plugins.springsecurity.rejectIfNoRule = true

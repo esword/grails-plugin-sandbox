@@ -9,12 +9,12 @@ fixture {
     if (!AuthRole.findByAuthority('ROLE_ADMIN'))
         adminRole(AuthRole, authority: 'ROLE_ADMIN')
 
-    if (!LibraryUser.findByUsername(LibraryUser.DEFAULT_USERNAME))
-        systemUser(LibraryUser, username: LibraryUser.DEFAULT_USERNAME, name: LibraryUser.DEFAULT_NAME, password: 'password', enabled: true)
+    if (!AuthUser.findByUsername(AuthUser.DEFAULT_USERNAME))
+        systemUser(AuthUser, username: AuthUser.DEFAULT_USERNAME, name: AuthUser.DEFAULT_NAME, password: 'password', enabled: true)
 }
 
 post {
-    def systemUser = LibraryUser.findByUsername(LibraryUser.DEFAULT_USERNAME)
+    def systemUser = AuthUser.findByUsername(AuthUser.DEFAULT_USERNAME)
     def adminRole = AuthRole.findByAuthority('ROLE_ADMIN')
     def userRole = AuthRole.findByAuthority('ROLE_USER')
     if (!UserRoleMapper.findByUserAndRole(systemUser, adminRole))

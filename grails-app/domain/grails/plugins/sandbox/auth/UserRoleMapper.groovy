@@ -4,7 +4,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder
 class UserRoleMapper implements Serializable {
     static auditable = true
 
-	LibraryUser user
+	AuthUser user
 	AuthRole role
 
     static mapping = {
@@ -37,11 +37,11 @@ class UserRoleMapper implements Serializable {
 			[userId: userId, roleId: roleId]
 	}
 
-	static UserRoleMapper create(LibraryUser user, AuthRole role, boolean flush = false) {
+	static UserRoleMapper create(AuthUser user, AuthRole role, boolean flush = false) {
 		new UserRoleMapper(user: user, role: role).save(flush: flush, insert: true)
 	}
 
-	static boolean remove(LibraryUser user, AuthRole role, boolean flush = false) {
+	static boolean remove(AuthUser user, AuthRole role, boolean flush = false) {
 		UserRoleMapper instance = UserRoleMapper.findByLibraryUserAndLibraryGroup(user, role)
 		if (!instance) {
 			return false
@@ -51,7 +51,7 @@ class UserRoleMapper implements Serializable {
 		true
 	}
 
-	static void removeAll(LibraryUser user) {
+	static void removeAll(AuthUser user) {
 		executeUpdate 'DELETE FROM UserRoleMapper WHERE user=:user', [user: user]
 	}
 

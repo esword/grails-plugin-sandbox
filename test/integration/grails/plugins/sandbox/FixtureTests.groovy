@@ -4,9 +4,10 @@
 package grails.plugins.sandbox
 
 import org.junit.Test
-import grails.plugins.sandbox.auth.LibraryUser
+
 import grails.plugins.sandbox.auth.AuthRole
 import grails.plugins.sandbox.auth.UserRoleMapper
+import grails.plugins.sandbox.auth.AuthUser
 
 /**
  * 
@@ -21,7 +22,7 @@ class FixtureTests {
     void "SecurityFixture inited correctly"() {
         def f = fixtureLoader.load('SecurityFixture')
         
-        assert LibraryUser.count == 1
+        assert AuthUser.count == 1
         assert AuthRole.count == 2
         assert UserRoleMapper.count == 2
     }
@@ -30,8 +31,8 @@ class FixtureTests {
     void "usersFixture inited correctly"() {
         fixtureLoader.load('SecurityFixture')
         def f = fixtureLoader.load('test/TestUsersFixture')
-        assert LibraryUser.count == 16
-        def admin1 = LibraryUser.findByUsername('admin1')
+        assert AuthUser.count == 16
+        def admin1 = AuthUser.findByUsername('admin1')
         assert admin1 != null
         assert admin1.authorities.size() == 2
     }

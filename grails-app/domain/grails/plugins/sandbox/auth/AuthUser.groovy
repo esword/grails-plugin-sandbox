@@ -5,7 +5,7 @@ import groovy.transform.EqualsAndHashCode
 
 @ToString(includes='username')
 @EqualsAndHashCode
-class LibraryUser {
+class AuthUser {
     static auditable = true
     /**
      * The name of the auto-created user which owns resources (e.g. default preferences that are auto-created by the

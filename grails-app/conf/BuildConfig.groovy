@@ -51,13 +51,14 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.7.2"
         runtime ":resources:1.2-RC1"
         build ":tomcat:$grailsVersion"
+		compile ':webxml:1.4.1'
 
         //Security
         compile ':spring-security-core:1.2.7.3'
         compile ":audit-logging:0.5.4"
 
         //Metrics
-        compile ":code-coverage:1.2.5"
+        test ":code-coverage:1.2.5"
         compile ":codenarc:0.17"
         compile ":gmetrics:0.3.1"
 
@@ -86,7 +87,9 @@ grails.project.dependency.resolution = {
         //https://bitbucket.org/tednaleid/grails-test-data/wiki/Home
         test ':build-test-data:2.0.2'
         test ":geb:$gebVersion"
-    }
+
+		compile ":cloud-foundry:1.2.3"
+	}
 }
 
 //See this article about getting codenarc output in Jenkins:

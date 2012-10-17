@@ -147,3 +147,6 @@ if (appConfigPath && (new File(appConfigPath).exists())) {
     }
 }
 
+grails.plugin.cloudfoundry.username = 'ericsword@gmail.com'
+grails.plugin.cloudfoundry.password = 'efQQK7hB'
+grails.plugin.cloudfoundry.appname = 'grails-plugin-sandbox'
